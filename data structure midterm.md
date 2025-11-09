@@ -2,7 +2,7 @@
 
 **演算法是一個有限的指令集，用以完成指定的工作。**
 
-- ## 定義:
+## 定義:
 
   1. **Input(明確輸入):**
 
@@ -31,7 +31,7 @@
 
 **遞迴是一種在函式內部呼叫自己來解決問題的方法。遞迴機制非常強大，因為它可以清楚的表達複雜的問題，並且通常能夠簡化程式碼。**
 
-- ## 三種遞迴
+## 三種遞迴
 
   1. **直接遞迴 (Direct Recursion):**
 
@@ -47,7 +47,7 @@
 
   ![alt text](image.png)
 
-- ## 與非遞迴函數的比較
+## 與非遞迴函數的比較
   | 特性     | 遞迴函數(Recursive Function) | 非遞迴函數(Non-Recursive Function) |
   | -------- | ---------------------------- | ---------------------------------- |
   | 可讀性   | 通常較容易                   | 可能較不易                         |
@@ -102,7 +102,7 @@ T(p) = c + Tp
 
 我們希望能用一些符號表示一個帶有 n 輸入的演算法函數 f(n)的時間或空間複雜度，接下來會介紹一些符號表示不精確但有意義的陳述。
 
-- ## Big-Oh (O(n)):
+## Big-Oh (O(n)):
 
   定義:
 
@@ -140,7 +140,7 @@ T(p) = c + Tp
 
     ![alt text](image-3.png)
 
-- ## Omega (Ω(n))
+## Omega (Ω(n))
 
   定義:
 
@@ -155,7 +155,7 @@ T(p) = c + Tp
 
   - 為使描述 f(n) = Ω(g(n)) 有意義，應選擇一個盡可能大的 g(n)。
 
-- ## Theta (Θ(n))
+## Theta (Θ(n))
 
   定義:
 
@@ -168,50 +168,50 @@ T(p) = c + Tp
   ![alt text](image-6.png)
   ![alt text](image-7.png)
 
-  - ## 其他的表示法
+## 其他的表示法
 
-    1. 小 o 符號 (little o notation):
+1. 小 o 符號 (little o notation):
 
-       定義:
+   定義:
 
-       ```
-       o(g(n)) = { f(n) | 對「所有」正的常數c，存在一個常數n0，使得對所有n >= n0，有0 <= f(n) < c*g(n) }
-       ```
+   ```
+   o(g(n)) = { f(n) | 對「所有」正的常數c，存在一個常數n0，使得對所有n >= n0，有0 <= f(n) < c*g(n) }
+   ```
 
-       **表示 f(n) 增長速度比 g(n) 慢得多。**
+   **表示 f(n) 增長速度比 g(n) 慢得多。**
 
-       跟 Big-Oh 的差別在於，Big-Oh 允許 f(n) 和 g(n) 增長速度相同，而小 o 則不允許。
+   跟 Big-Oh 的差別在於，Big-Oh 允許 f(n) 和 g(n) 增長速度相同，而小 o 則不允許。
 
-    2. 小 ω 符號 (little omega notation):
+2. 小 ω 符號 (little omega notation):
 
-       定義:
+   定義:
 
-       ```
-       ω(g(n)) = { f(n) | 對「所有」正的常數c，存在一個常數n0，使得對所有n >= n0，有0 <= c*g(n) < f(n) }
-       ```
+   ```
+   ω(g(n)) = { f(n) | 對「所有」正的常數c，存在一個常數n0，使得對所有n >= n0，有0 <= c*g(n) < f(n) }
+   ```
 
-       **表示 f(n) 增長速度比 g(n) 快得多。**
+   **表示 f(n) 增長速度比 g(n) 快得多。**
 
-       跟 Omega 的差別在於，Omega 允許 f(n) 和 g(n) 增長速度相同，而小 ω 則不允許。
+   跟 Omega 的差別在於，Omega 允許 f(n) 和 g(n) 增長速度相同，而小 ω 則不允許。
 
-  - ## 一些轉換(可能不用記...嗎?)
-    1. 若 f(n) = Θ(g(n)) 且 g(n) = Θ(h(n))，則 f(n) = Θ(h(n))。
-    2. 若 f(n) = O(g(n)) 且 g(n) = O(h(n))，則 f(n) = O(h(n))。
-    3. 若 f(n) = Ω(g(n)) 且 g(n) = Ω(h(n))，則 f(n) = Ω(h(n))。
-    4. 若 f(n) = o(g(n)) 且 g(n) = o(h(n))，則 f(n) = o(h(n))。
-    5. 若 f(n) = ω(g(n)) 且 g(n) = ω(h(n))，則 f(n) = ω(h(n))。
-    6. f(n) = Θ(g(n)) 若且唯若 g(n) = Θ(f(n))。
-    7. f(n) = O(g(n)) 若且唯若 g(n) = Ω(f(n))。
-    8. f(n) = o(g(n)) 若且唯若 g(n) = ω(f(n))。
-    9. f(n) = Θ(f(n))。
-    10. f(n) = O(f(n))。
-    11. f(n) = Ω(f(n))。
+## 一些轉換(可能不用記...嗎?)
+1. 若 f(n) = Θ(g(n)) 且 g(n) = Θ(h(n))，則 f(n) = Θ(h(n))。
+2. 若 f(n) = O(g(n)) 且 g(n) = O(h(n))，則 f(n) = O(h(n))。
+3. 若 f(n) = Ω(g(n)) 且 g(n) = Ω(h(n))，則 f(n) = Ω(h(n))。
+4. 若 f(n) = o(g(n)) 且 g(n) = o(h(n))，則 f(n) = o(h(n))。
+5. 若 f(n) = ω(g(n)) 且 g(n) = ω(h(n))，則 f(n) = ω(h(n))。
+6. f(n) = Θ(g(n)) 若且唯若 g(n) = Θ(f(n))。
+7. f(n) = O(g(n)) 若且唯若 g(n) = Ω(f(n))。
+8. f(n) = o(g(n)) 若且唯若 g(n) = ω(f(n))。
+9. f(n) = Θ(f(n))。
+10. f(n) = O(f(n))。
+11. f(n) = Ω(f(n))。
 
 # 大師法則 (Master Method)
 
 **大師法則是一種用來分析分治演算法時間複雜度的工具。**
 
-- ## 大師法則的形式
+## 大師法則的形式
 
   對於一個遞迴關係式:
 
@@ -225,7 +225,7 @@ T(p) = c + Tp
   - b > 1 是每個子問題的規模縮小比例。
   - f(n) 是合併子問題結果所需的時間。
 
-- ## 大師法則的三種情況
+## 大師法則的三種情況
 
   1. **情況 1:**
 
@@ -279,17 +279,17 @@ T(p) = c + Tp
 
 **陣列是含有多個鍵值對(pairs <index, value>)的資料結構，並使每個索引(index)都對到一個唯一的值(value)。**
 
-- ## 2D 陣列
+## 2D 陣列
 
   - **2D 陣列是陣列的陣列，又被稱為矩陣。**
   - **一般由 m 個行(row)和 n 個列(column)組成，若行列數相等則為方陣(square matrix)。**
     ![alt text](image-8.png)
 
-  - **對於矩陣 A，元素 Ai,j = A[i-1][j-1]**
+  - **對於矩陣 A，元素 A~i,j~ = A[i-1][j-1]**
   - **矩陣能以兩種方法表示:**
 
-    1. ## 行主序(row-major order):
-       - **對於矩陣 A，行主序會將 A1,1、A1,2、...、A1,n 依序存放，接著是 A2,1、A2,2、...、A2,n，以此類推。**
+    ## 1. 行主序(row-major order):
+       - **對於矩陣 A，行主序會將 A~1,1~、A~1,2~、...、A~1,n~ 依序存放，接著是 A~2,1~、A~2,2~、...、A~2,n~，以此類推。**
        ```
        (3x3 matrix)
        [27,31, -4,
@@ -301,108 +301,109 @@ T(p) = c + Tp
        ls + [(i - 1) * n + (j - 1)] * d
        ```
        其中 ls 為陣列的起始位置，d 為每個元素的大小。
-    2. ## 列主序(column-major order):
+    ## 2. 列主序(column-major order):
        - **對於矩陣 A，列主序會將 A1,1、A2,1、...、Am,1 依序存放，接著是 A1,2、A2,2、...、Am,2，以此類推。**
+           ```
+           (3x3 matrix)
+           [27,31, -4,
+            5, 8, 16, => [27,5,7,31,8,10,-4,16,15]
+            7,10, 15]    (A1,1,A2,1,A3,1,A1,2,A2,2,A3,2,A1,3,A2,3,A3,3)
+           ```
+       - **對於 m x n 的矩陣 A，元素 A~i,j~ 在一維陣列中的位置為:**
+           ```
+           ls + [(j - 1) * m + (i - 1)] * d
+           ```
+           其中 ls 為陣列的起始位置，d 為每個元素的大小。
+
+  ## 三角矩陣
+
+  ### 1. 下三角矩陣 (Lower Triangular Matrix)
+
+   - **一個方陣(Square Matrix)A 的第 i 行最大的非零項目數是 i，且當 i < j 時，A~i,j~ = 0，這樣的矩陣稱為下三角矩陣。**
+   - **下三角矩陣的非零項目數為:**
+
        ```
-       (3x3 matrix)
-       [27,31, -4,
-        5, 8, 16, => [27,5,7,31,8,10,-4,16,15]
-        7,10, 15]    (A1,1,A2,1,A3,1,A1,2,A2,2,A3,2,A1,3,A2,3,A3,3)
+       n(n + 1) / 2
        ```
-       - **對於 m x n 的矩陣 A，元素 Ai,j 在一維陣列中的位置為:**
+
+   ![alt text](image-9.png)
+
+   - ## 位置表示
+
+     - ## 行主序(row-major order):
+
+       **對於 n x n 的下三角矩陣 A，元素 A~i,j~ 在一維陣列中的位置為:**
+
        ```
-       ls + [(j - 1) * m + (i - 1)] * d
+       ∀i ≥ j, Location(Ai,j) = ls + [(i * (i - 1)) / 2 + j - 1] * d
+       ```
+
+       其中 ls 為陣列的起始位置，d 為每個元素的大小。
+
+     - ## 列主序(column-major order):
+       **對於 n x n 的下三角矩陣 A，元素 A~i,j~ 在一維陣列中的位置為:**
+       ```
+       ∀i ≥ j, Location(Ai,j) = ls + [((2n - j)(j - 1)) / 2 + i - 1] * d
        ```
        其中 ls 為陣列的起始位置，d 為每個元素的大小。
 
-  - ## 三角矩陣
+  ### 2. 上三角矩陣 (Upper Triangular Matrix)
 
-    1. ## 下三角矩陣 (Lower Triangular Matrix)
-
-       - **一個方陣(Square Matrix)A 的第 i 行最大的非零項目數是 i，且當 i < j 時，Ai,j = 0，這樣的矩陣稱為下三角矩陣。**
-       - **下三角矩陣的非零項目數為:**
+   - **一個方陣(Square Matrix)A 的第 i 行最小的非零項目數是 i，且當 i > j 時，Ai,j = 0，這樣的矩陣稱為上三角矩陣。**
+   - **上三角矩陣的非零項目數為:**
 
        ```
        n(n + 1) / 2
        ```
 
-       ![alt text](image-9.png)
+   ![alt text](image-10.png)
 
-       - ## 位置表示
-
-         - ## 行主序(row-major order):
-
-           - **對於 n x n 的下三角矩陣 A，元素 Ai,j 在一維陣列中的位置為:**
-
-           ```
-           ∀𝑖 ≥ 𝑗, Location(Ai,j) = ls + [(i * (i - 1)) / 2 + (j - 1)] * d
-           ```
-
-           其中 ls 為陣列的起始位置，d 為每個元素的大小。
-
-         - ## 列主序(column-major order):
-           - **對於 n x n 的下三角矩陣 A，元素 Ai,j 在一維陣列中的位置為:**
-           ```
-           ∀𝑖 ≥ 𝑗, Location(Ai,j) = ls + [(j - 1) * n + (i - 1)] * d
-           ```
-           其中 ls 為陣列的起始位置，d 為每個元素的大小。
-
-    2. ## 上三角矩陣 (Upper Triangular Matrix)
-
-       - **一個方陣(Square Matrix)A 的第 i 行最小的非零項目數是 i，且當 i > j 時，Ai,j = 0，這樣的矩陣稱為上三角矩陣。**
-       - **上三角矩陣的非零項目數為:**
-
+   - ## 位置表示
+     - ## 行主序(row-major order):
+       **對於 n x n 的上三角矩陣 A，元素 A~i,j~ 在一維陣列中的位置為:**
        ```
-       n(n + 1) / 2
+       ∀i ≤ j, Location(Ai,j) = ls + [((2n - i)(i - 1)) / 2 + j - 1] * d
        ```
-
-       ![alt text](image-10.png)
-
-       - ## 位置表示
-         - ## 行主序(row-major order):
-           - **對於 n x n 的上三角矩陣 A，元素 Ai,j 在一維陣列中的位置為:**
-           ```
-           ∀𝑖 ≤ 𝑗, Location(Ai,j) = ls + [(i * (2n - i + 1)) / 2 + (j - i)] * d
-           ```
-           其中 ls 為陣列的起始位置，d 為每個元素的大小。
-         - ## 列主序(column-major order):
-           - **對於 n x n 的上三角矩陣 A，元素 Ai,j 在一維陣列中的位置為:**
-           ```
-           ∀𝑖 ≤ 𝑗, Location(Ai,j) = ls + [(j * (j - 1)) / 2 + (i - 1)] * d
-           ```
-           其中 ls 為陣列的起始位置，d 為每個元素的大小。
+       其中 ls 為陣列的起始位置，d 為每個元素的大小。
+       
+     - ## 列主序(column-major order):
+       **對於 n x n 的上三角矩陣 A，元素 A~i,j~ 在一維陣列中的位置為:**
+       ```
+       ∀i ≤ j, Location(Ai,j) = ls + [(j * (j - 1)) / 2 + i - 1] * d
+       ```
+       其中 ls 為陣列的起始位置，d 為每個元素的大小。
 
 # 鏈結串列 Linked List
 
 **鏈結串列是一種動態資料結構，由一系列節點(node)組成，每個節點包含一個或多個資料和指向下一個節點的指標(pointer)。**
 
-- ## 單向鏈結串列 (Singly Linked List)
+## 單向鏈結串列 (Singly Linked List)
 
   - **每個節點包含兩個部分: 資料(data)和指向下一個節點的指標(next pointer)。**
   - **最後一個節點的 next 指標指向 null，表示鏈結串列的結束。**
 
   ![alt text](image-11.png)
 
-- ## 環狀鏈結串列 (Circular Linked List)
+## 環狀鏈結串列 (Circular Linked List)
 
   - **最後一個節點的 next 指標指向鏈結串列的第一個節點，形成一個環狀結構。**
 
   ![alt text](image-12.png)
 
-- ## 雙向鏈結串列 (Doubly Linked List)
+## 雙向鏈結串列 (Doubly Linked List)
 
   - **每個節點包含三個部分: 資料(data)、指向下一個節點的指標(next pointer)和指向前一個節點的指標(prev pointer)。**
   - **這種結構允許雙向遍歷鏈結串列。**
 
   ![alt text](image-13.png)
 
-- ## 雙向環狀鏈結串列 (Doubly Circular Linked List)
+## 雙向環狀鏈結串列 (Doubly Circular Linked List)
 
   - **最後一個節點的 next 指標指向鏈結串列的第一個節點，而第一個節點的 prev 指標指向最後一個節點，形成一個雙向環狀結構。**
 
   ![alt text](image-14.png)
 
-- ## 其與陣列之比較
+## 其與陣列之比較
   | 特性           | 陣列(Array)            | 鏈結串列(Linked List)    |
   | -------------- | ---------------------- | ------------------------ |
   | 記憶體配置     | 靜態配置，大小固定     | 動態配置，大小可變       |
@@ -419,7 +420,7 @@ T(p) = c + Tp
 
 ![alt text](image-19.png)
 
-- ## 以鏈結串列實作堆疊
+## 以鏈結串列實作堆疊
 
   - **若資料大小無法確定，則能以鏈結串列實作堆疊。**
   - **堆疊的頂端(top)指向鏈結串列的第一個節點。**
@@ -444,7 +445,7 @@ T(p) = c + Tp
 
        ![alt text](image-17.png)
 
-- ## 堆疊排列 Stack Permutation
+## 堆疊排列 Stack Permutation
 
   - **給定一個輸入序列，堆疊排列是指透過堆疊操作所能產生的所有可能輸出序列。**
   - **例如，對於輸入序列 [1, 2, 3]，可能的堆疊排列包括:**
@@ -477,7 +478,7 @@ T(p) = c + Tp
 
 ![alt text](image-20.png)
 
-- ## 以陣列實作佇列
+## 以陣列實作佇列
 
   - **使用固定大小的陣列來存放佇列元素，並使用兩個指標(front 和 rear)來追蹤佇列的前端和後端位置。**
   - **當 rear 到達陣列末端時，可以將其重新指向陣列的起始位置，形成環狀佇列(circular queue)。**
@@ -550,13 +551,13 @@ T(p) = c + Tp
        }
        ```
 
-  - ## 以鏈結串列實作佇列
+## 以鏈結串列實作佇列
 
-    - **比起使用陣列，鏈結串列在插入和刪除操作上更具彈性，無需考慮容量限制。**
+- **比起使用陣列，鏈結串列在插入和刪除操作上更具彈性，無需考慮容量限制。**
 
-    - ## 操作
+- ## 操作
 
-      0. **宣告**
+  0. **Declare(宣告)**
 
       ```c++
       #include <stdio.h>
@@ -576,113 +577,113 @@ T(p) = c + Tp
       struct queue *delete_element(struct queue *);
       ```
 
-      1. **Create(建立):**
+  1. **Create(建立):**
 
-         - **初始化佇列，將 front 和 rear 指標設為 null。**
+     - **初始化佇列，將 front 和 rear 指標設為 null。**
 
-         ```c++
-         void create_queue(struct queue *q) {
-           q->front = NULL;
-           q->rear = NULL;
-         }
-         ```
+     ```c++
+     void create_queue(struct queue *q) {
+       q->front = NULL;
+       q->rear = NULL;
+     }
+     ```
 
-      2. **Insert(插入):**
+  2. **Insert(插入):**
 
-         - **建立一個新節點，將資料存入，並將其加入到佇列的 rear 位置，然後更新 rear 指標。**
+     - **建立一個新節點，將資料存入，並將其加入到佇列的 rear 位置，然後更新 rear 指標。**
 
-         ```c++
-         struct queue *insert(struct queue *q, int value) {
-           struct node *new_node;
-           new_node = (struct node *)malloc(sizeof(struct node));
-           new_node->data = value;
+     ```c++
+     struct queue *insert(struct queue *q, int value) {
+       struct node *new_node;
+       new_node = (struct node *)malloc(sizeof(struct node));
+       new_node->data = value;
 
-           if(q->front == NULL) {
-               q->front = new_node;
-               q->rear = new_node;
-               q->front->next = NULL;
-               q->rear->next = NULL;
-           }
-           else {
-               q->rear->next = new_node;
-               q->rear = new_node;
-               q->rear->next = NULL;
-           }
-           return q;
-         }
-         ```
+       if(q->front == NULL) {
+           q->front = new_node;
+           q->rear = new_node;
+           q->front->next = NULL;
+           q->rear->next = NULL;
+       }
+       else {
+           q->rear->next = new_node;
+           q->rear = new_node;
+           q->rear->next = NULL;
+       }
+       return q;
+     }
+     ```
 
-      3. **Delete(刪除):**
+  3. **Delete(刪除):**
 
-         - **從佇列的 front 位置移除元素，然後更新 front 指標。**
+     - **從佇列的 front 位置移除元素，然後更新 front 指標。**
 
-         ```c++
-         struct queue *delete_element(struct queue *q) {
-           struct node *temp;
-           temp = q->front;
-           if(q->front == NULL) {
-               printf("\n UNDERFLOW");
-           }
-           else {
-               q->front = q->front->next;
-               printf("\n Deleted element is %d", temp->data);
-               free(temp);
-           }
-           return q;
-         }
-         ```
+     ```c++
+     struct queue *delete_element(struct queue *q) {
+       struct node *temp;
+       temp = q->front;
+       if(q->front == NULL) {
+           printf("\n UNDERFLOW");
+       }
+       else {
+           q->front = q->front->next;
+           printf("\n Deleted element is %d", temp->data);
+           free(temp);
+       }
+       return q;
+     }
+     ```
 
-  - ## 各種變體
+## 各種變體
 
-    1. ## 環形佇列 (Circular Queue)
+1. ## 環形佇列 (Circular Queue)
 
-       - **環形佇列是一種特殊的佇列，當 rear 指標到達陣列末端時，會重新指向陣列的起始位置，形成一個環狀結構。**
+   - **環形佇列是一種特殊的佇列，當 rear 指標到達陣列末端時，會重新指向陣列的起始位置，形成一個環狀結構。**
 
-         ![alt text](image-25.png)
+     ![alt text](image-25.png)
 
-       - **無法對已滿的佇列進行插入，即便刪除了元素，其已經不具備可被插入的性質。**
+   - **無法對已滿的佇列進行插入，即便刪除了元素，其已經不具備可被插入的性質。**
 
-    2. ## 雙端佇列 (Deque - Double-Ended Queue)
+2. ## 雙端佇列 (Deque - Double-Ended Queue)
 
-       - **雙端佇列允許在兩端進行插入和刪除操作，提供更大的靈活性。**
-       - **具有兩個指標，RIGHT 以及 LEFT，任何插入刪除行為無法在中間進行。**
+   - **雙端佇列允許在兩端進行插入和刪除操作，提供更大的靈活性。**
+   - **具有兩個指標，RIGHT 以及 LEFT，任何插入刪除行為無法在中間進行。**
 
-         ![alt text](image-24.png)
+     ![alt text](image-24.png)
 
-       - ## 輸入限制雙端佇列 (Input-Restricted Deque)
+   - ## 輸入限制雙端佇列 (Input-Restricted Deque)
 
-         **只能在一端進行插入操作，但可以在兩端進行刪除操作。**
+     **只能在一端進行插入操作，但可以在兩端進行刪除操作。**
 
-       - ## 輸出限制雙端佇列 (Output-Restricted Deque)
+   - ## 輸出限制雙端佇列 (Output-Restricted Deque)
 
-         **可以在兩端進行插入操作，但只能在一端進行刪除操作。**
+     **可以在兩端進行插入操作，但只能在一端進行刪除操作。**
 
-    3. ## 優先佇列 (Priority Queue)
+3. ## 優先佇列 (Priority Queue)
 
-       - **優先佇列是一種特殊的佇列，其中每個元素都有一個優先級，元素被處理的順序取決於其優先級，而非插入順序；具有相同優先級的元素會按照插入順序處理(FCFS, First-Come-First-Served)。**
-       - **廣泛適用於各種操作系統，如煞車優先系統(BOS, Brake Override System)。**
+   - **優先佇列是一種特殊的佇列，其中每個元素都有一個優先級，元素被處理的順序取決於其優先級，而非插入順序；具有相同優先級的元素會按照插入順序處理(FCFS, First-Come-First-Served)。**
+   - **廣泛適用於各種操作系統，如煞車優先系統(BOS, Brake Override System)。**
 
-       - ## 實作方法(Array)
+   - ## 實作方法(Array)
 
-         - **每個優先級(priority)都有自己的佇列，以及對應的 front 和 rear 指標。**
+     - **每個優先級(priority)都有自己的佇列，以及對應的 front 和 rear 指標。**
 
-           ![alt text](image-21.png)
+       ![alt text](image-21.png)
 
-         - **插入操作根據元素的優先級將其加入對應的佇列。(以插入元素 R 的優先級為 3 的範例)**
+     - **插入操作根據元素的優先級將其加入對應的佇列。(以插入元素 R 的優先級為 3 的範例)**
 
-           ![alt text](image-22.png)
+       ![alt text](image-22.png)
 
-       - ## 實作方法(鏈結串列)
+   - ## 實作方法(鏈結串列)
 
-         - **每個節點都有三個部分：資料區、優先級區和指向下一個節點的指標。**
+     - **每個節點都有三個部分：資料區、優先級區和指向下一個節點的指標。**
 
-           ![alt text](image-23.png)
+       ![alt text](image-23.png)
 
-         - **此鏈結串列具以下特點，舉例來說:**
+     - **此鏈結串列具以下特點，舉例來說:**
 
-           1. **由於 A 具有比 B 更高的優先級(1<2)，因此 A 會被插入到 B 的前面。**
-           2. **C 和 D 具有相同的優先級(2)，因此它們依先來後到被排列並被處理。**
-           3. **優先級以適當將元素排列，我們無法得知低優先級的元素是否比高優先級還要先到。**
+       1. **由於 A 具有比 B 更高的優先級(1<2)，因此 A 會被插入到 B 的前面。**
+       2. **C 和 D 具有相同的優先級(2)，因此它們依先來後到被排列並被處理。**
+       3. **優先級以適當將元素排列，我們無法得知低優先級的元素是否比高優先級還要先到。**
 
 # 算術表示法 Arithmetic Expression
 
