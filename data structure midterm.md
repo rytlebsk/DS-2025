@@ -1370,3 +1370,432 @@ T(p) = c + Tp
 | **二元堆積 (Binary Heap)**  | 不保證 BST 性質，只保證堆序      | 完全二元樹                   | 優先佇列 (Priority Queue)  | 取最大/最小值極快               | 無法快速搜尋特定值             | O(log n)                 | O(log n)                 | **O(1)** 取極值，搜尋其他值 O(n) |
 | **伸展樹 (Splay Tree)**     | 根據存取頻率自我調整，不嚴格平衡 | 普通 BST 節點                | 熱點資料常被重複查詢       | 近期存取的元素極快 (平攤效率好) | 單次操作最差 O(n)              | 均攤 O(log n)            | 均攤 O(log n)            | 均攤 O(log n)                    |
 | **霍夫曼樹 (Huffman Tree)** | 無需平衡，依頻率建滿二元樹       | 每節點存編碼權重             | 資料壓縮 (如 ZIP, JPEG)    | 能產生最省空間的前綴碼          | 只能用於編碼，不能用於一般查詢 | 建樹 O(n log n)          | 無刪除操作概念           | 編碼/解碼視樹深度，一般 O(n)     |
+
+# 排序 Sorting Algorithms
+
+**排序算法是將一組資料按照特定順序重新排列的過程。**
+
+## 冒泡排序 Bubble Sort
+
+- **概念:** 重複地遍歷要排序的資料列，依次比較相鄰的元素，若順序錯誤則交換位置，直到整個資料列有序為止。
+- **時間複雜度:** 最佳 O(n^2)，最差 O(n^2)
+- **虛擬碼 Pseudocode:**
+
+  ```
+  for i from 0 to n-1 do
+      for j from 0 to n-i-2 do
+          if A[j] > A[j+1] then
+              swap A[j] and A[j+1]
+  ```
+
+- **範例:**
+
+  排序: `A[] = {5, 2, 9, 1, 5, 6}`
+
+  1. 比較 A[0] 和 A[1]，因為 5 > 2，交換位置: {2, 5, 9, 1, 5, 6}
+  2. 比較 A[1] 和 A[2]，因為 5 < 9，不交換位置: {2, 5, 9, 1, 5, 6}
+  3. 比較 A[2] 和 A[3]，因為 9 > 1，交換位置: {2, 5, 1, 9, 5, 6}
+  4. 重複以上步驟直到整個陣列有序
+
+  最終結果: `A[] = {1, 2, 5, 5, 6, 9}`
+
+## 插入排序 Insertion Sort
+
+- **概念:** 將資料分為已排序和未排序兩部分，從未排序部分取出一個元素，將其插入到已排序部分的適當位置，重複此過程直到所有元素均排序完成。
+- **時間複雜度:** 最佳 O(n)，最差 O(n^2)
+- **虛擬碼 Pseudocode:**
+
+  ```
+  for i from 1 to n-1 do
+      key = A[i]
+      j = i - 1
+      while j >= 0 and A[j] > key do
+          A[j + 1] = A[j]
+          j = j - 1
+      A[j + 1] = key
+  ```
+
+- **範例:**
+
+  排序: `A[] = {5, 2, 9, 1, 5, 6}`
+
+  1. 將 A[1] (2) 插入到已排序部分 {5}，結果: {2, 5}
+  2. 將 A[2] (9) 插入到已排序部分 {2, 5}，結果: {2, 5, 9}
+  3. 將 A[3] (1) 插入到已排序部分 {2, 5, 9}，結果: {1, 2, 5, 9}
+  4. 重複以上步驟直到整個陣列有序
+
+  最終結果: `A[] = {1, 2, 5, 5, 6, 9}`
+
+  ![alt text](image-68.png)
+
+## 二元樹排序 Tree Sort
+
+- **概念:** 將資料插入到二元搜尋樹中，然後進行中序遍歷以獲得排序後的資料。
+- **時間複雜度:** 最佳 O(n log n)，平均 O(n log n)，最差 O(n^2)
+
+## 堆積排序 Heap Sort
+
+- **概念:** 將資料構建成最大或最小堆積，然後反覆取出堆頂元素並重建堆積，直到所有元素均排序完成。
+- **時間複雜度:** 最佳 O(n log n)，平均 O(n log n)，最差 O(n log n)
+
+## 選擇排序 Selection Sort
+
+- **概念:** 重複地從未排序部分選擇最小(或最大)元素，將其放置在已排序部分的末尾，直到所有元素均排序完成。
+- **時間複雜度:** 最佳 O(n^2)，最差 O(n^2)
+- **虛擬碼 Pseudocode:**
+
+  ```
+  for i from 0 to n-1 do
+      minIndex = i
+      for j from i+1 to n-1 do
+          if A[j] < A[minIndex] then
+              minIndex = j
+      swap A[i] and A[minIndex]
+  ```
+
+- **範例:**
+  排序: `A[] = {5, 2, 9, 1, 7, 6}`
+
+  1. 找到最小元素 1，交換位置: {1, 2, 9, 5, 7, 6}
+  2. 找到最小元素 2，位置不變: {1, 2, 9, 5, 7, 6}
+  3. 找到最小元素 5，交換位置: {1, 2, 5, 9, 7, 6}
+  4. 重複以上步驟直到整個陣列有序
+
+  最終結果: `A[] = {1, 2, 5, 6, 7, 9}`
+
+  ![alt text](image-69.png)
+
+## 合併排序 Merge Sort
+
+- **概念:** 將資料遞迴地分割成兩半，直到每個子陣列只有一個元素，然後將子陣列合併回來，並在合併過程中進行排序。
+- **時間複雜度:** 最佳 O(n log n)，最差 O(n log n)
+- **虛擬碼 Pseudocode:**
+
+  ```
+  function mergeSort(A, left, right)
+      if left < right then
+          mid = (left + right) / 2
+          mergeSort(A, left, mid)
+          mergeSort(A, mid + 1, right)
+          merge(A, left, mid, right)
+
+  function merge(A, left, mid, right)
+      n1 = mid - left + 1
+      n2 = right - mid
+      create arrays L[0..n1-1] and R[0..n2-1]
+      for i from 0 to n1-1 do
+          L[i] = A[left + i]
+      for j from 0 to n2-1 do
+          R[j] = A[mid + 1 + j]
+      i = 0; j = 0; k = left
+      while i < n1 and j < n2 do
+          if L[i] <= R[j] then
+              A[k] = L[i]
+              i = i + 1
+          else
+              A[k] = R[j]
+              j = j + 1
+          k = k + 1
+      while i < n1 do
+          A[k] = L[i]
+          i = i + 1
+          k = k + 1
+      while j < n2 do
+          A[k] = R[j]
+          j = j + 1
+          k = k + 1
+  ```
+
+- **範例:**
+  排序: `A[] = {5, 2, 9, 1, 7, 6}`
+
+  (單次 merge 過程，目前有兩陣列 L[] = {2,5,9} 及 R[] = {1,6,7} )
+
+  1.
+
+  ![alt text](image-70.png)
+
+## 基數排序 Radix Sort
+
+- **概念:** 根據每個元素的位數，從最低位到最高位依次進行排序，通常使用穩定排序算法(如計數排序)作為子排序算法。
+- **時間複雜度:** O(kn)，其中 k 為最大數字的位數。
+
+![alt text](image-71.png)
+
+## 快速排序 Quick Sort
+
+- **概念:** 選擇一個基準元素(pivot)，將資料分割成兩部分，一部分小於基準元素，另一部分大於基準元素，然後遞迴地對這兩部分進行排序。
+- **時間複雜度:** 最佳 O(n log n)，平均 O(n log n)，最差 O(n^2)
+- **虛擬碼 Pseudocode:**
+
+  ```
+  function quickSort(A, low, high)
+      if low < high then
+          pivotIndex = partition(A, low, high)
+          quickSort(A, low, pivotIndex - 1)
+          quickSort(A, pivotIndex + 1, high)
+
+  function partition(A, low, high)
+      pivot = A[high]
+      i = low - 1
+      for j from low to high - 1 do
+          if A[j] <= pivot then
+              i = i + 1
+              swap A[i] and A[j]
+      swap A[i + 1] and A[high]
+      return i + 1
+  ```
+
+- **範例:**
+  排序: `A[] = {5, 2, 9, 1, 7, 6}`
+
+  (單次 partition 過程)
+
+  1. 選擇基準元素 5 進行 partition，使 left 及 pivot 在其上，right 在 6 上。
+  2. 因為 right > pivot，right 左移至 7(仍然合法)。
+  3. 直至 right 移至 1(不合法)，停止。
+  4. 交換 left 及 right 的值，並使 pivot 仍然於 5 的位置，結果: {1, 2, 9, 5, 7, 6}
+  5. left 在 1 上，尚未達到停止條件，繼續右移至 2(合法)，再右移至 9(不合法)，停止。
+  6. 交換 left 及 right 的值，並使 pivot 仍然於 5 的位置，結果: {1, 2, 5, 9, 7, 6}
+  7. right 在 9 上，尚未達到停止條件，繼續左移至 5，此時 left 與 right 相遇，停止。
+
+  最終結果: `A[] = {1, 2, 5, 6, 7, 9}`
+
+  ## 希爾排序 Shell Sort
+
+- **概念:** 將資料的長度除以 2 為 gap，把每單位 gap 的資料切開疊起來，縱向即為子陣列，對每個子陣列做插入排序，重複此過程直到 gap 為 1。
+- **時間複雜度:** 最佳 O(n)，最差 O(n^2)
+- **虛擬碼 Pseudocode:**
+
+  ```
+  function shellSort(A)
+      gap = length(A)
+      while gap > 1 do
+          gap = (gap + 1) / 2
+          for i from 0 to gap - 1 do
+              insertionSortWithGap(A, i, gap)
+  ```
+
+- **範例:**
+  排序: `A[] = {5, 2, 9, 1, 7, 6}`
+
+  1. 初始 gap = 6，更新 gap = 3，分成三個子陣列: {5, 1}, {2, 7}, {9, 6}。
+  2. 對每個子陣列進行插入排序，結果: {1, 5}, {2, 7}, {6, 9}，合併後: {1, 2, 6, 5, 7, 9}。
+  3. 更新 gap = 2，分成兩個子陣列: {1, 6, 7}, {2, 5, 9}。
+  4. 對每個子陣列進行插入排序，結果: {1, 5, 6, 7}, {2, 9}，合併後: {1, 2, 5, 6, 7, 9}。
+  5. 更新 gap = 1，對整個陣列進行插入排序，結果: {1, 2, 5, 6, 7, 9}。
+
+  最終結果: `A[] = {1, 2, 5, 6, 7, 9}`
+
+  ## 性質-穩定性 Stability
+
+- **穩定排序 Stable Sort:** 若兩個元素相等，排序後其相對位置不變。例如: 冒泡排序、插入排序、合併排序、二元樹排序、基數排序。
+- **不穩定排序 Unstable Sort:** 若兩個元素相等，排序後其相對位置可能改變。例如: 選擇排序、快速排序、堆積排序、歇爾排序。
+
+  ![alt text](image-72.png)
+
+## 搜尋 Searching Algorithms
+
+**搜尋算法是用於在資料結構中查找特定元素的過程。**
+
+- ### 線性搜尋 Linear Search
+  - **概念:** 從資料結構的第一個元素開始，逐一比較每個元素，直到找到目標元素或遍歷完整個資料結構。
+- ### 二元搜尋 Binary Search
+  - **概念:** 適用於已排序的資料結構，通過反覆將搜尋範圍縮小一半來查找目標元素。
+- ### 插值搜尋 Interpolation Search
+  - **概念:** 適用於均勻分布的已排序資料結構，根據目標元素與資料範圍的比例來估算下一個搜尋位置。
+- ### 跳躍搜尋 Jump Search
+  - **概念:** 適用於已排序的資料結構，通過跳躍固定步長來快速縮小搜尋範圍，然後進行線性搜尋。
+
+# 圖 Graphs
+
+**圖是一種由節點(vertices/nodes)和邊(edges)組成的資料結構，用於表示物件之間的關係。**
+
+## 無向圖 Undirected Graph
+
+### 定義 Definition
+
+一個圖 G 可以表示為一對 G = (V, E)，其中:
+
+- V(G) 是節點的集合，稱為頂點集(vertex set)，每個節點代表一個物件。
+- E(G) 是邊的集合，稱為邊集(edge set)，每條邊連接兩個節點，表示它們之間的關係。
+
+下圖為一個包含 5 個節點和 6 條邊的無向圖，其中:
+
+- V(G) = {A, B, C, D, E}
+- E(G) = {(A, B), (A, D), (B, C), (B, D), (C, E), (D, E)}
+
+![alt text](image-73.png)
+
+### 術語 Terminology
+
+- **鄰接節點 Adjacent Nodes/neighbors:** 對每條邊來說，其中 e = (u, v) 連接節點 u 和 v，則 u 和 v 是彼此的鄰接節點。
+- **度 Degree:** 節點 u 的度 deg(u) 是指與節點 u 相連的邊的數量。若 deg(u) = 0，則稱節點 u 為孤立節點(isolated node)。
+- **路徑 Path:** 在圖中，一條路徑是由一系列相鄰節點組成的序列，表示從一個節點到另一個節點的連接方式。路徑 P 可以表示為 P = (v1, v2, ..., vk)，其中每對相鄰節點 (vi, vi+1) 都存在於邊集 E(G) 中。若 v1 = vk，則稱該路徑為閉路(closed path)。
+- **簡單路徑 Simple Path:** 若路徑中沒有重複的節點，則稱該路徑為簡單路徑。(例外: 起點與終點可相同，形成閉路，稱為簡單閉路 closed simple path)
+
+  ![alt text](image-74.png)
+
+- **迴路 Cycle:** 若路徑的起點和終點是同一個節點，且路徑中至少包含一條邊，則稱該路徑為迴路，同於閉路。簡單迴路(simple cycle)是指除了起點和終點外，路徑中沒有重複的節點，同於簡單閉路。
+
+  ![alt text](image-75.png)
+
+- **正則圖 Regular Graph:** 若圖中所有節點的度相同，則稱該圖為正則圖。
+
+  ![alt text](image-76.png)
+
+- **連通圖 Connected Graph:** 若圖中任意兩個節點之間都存在路徑(無孤立節點)，則稱該圖為連通圖。
+
+  ![alt text](image-77.png)
+
+- **完全圖 Complete Graph:** 若圖中每對不同的節點之間都存在一條邊，則稱該圖為完全圖。且完全圖中節點數為 n 的圖，邊數為 n(n-1)/2。
+
+  ![alt text](image-78.png)
+
+- **團 Clique:** 圖中的一個子集 S ⊆ V(G)，若 S 中的每對不同節點之間都存在一條邊，則稱 S 為圖 G 的一個團。
+
+  ![alt text](image-79.png)
+
+- **迴圈 Loop:** 若圖中存在一條邊連接節點 u 到自身，即 e = (u, u)，則稱該邊為迴圈。
+- **多重邊 Multiedge:** 若圖中存在多條邊連接同一對節點 u 和 v，即 e1 = (u, v) 和 e2 = (u, v)，則稱這些邊為多重邊。
+- **多重圖 Multigraph:** 若圖中允許存在迴圈和多重邊，則稱該圖為多重圖。
+- **圖的大小 Size of a Graph:** 圖 G 的大小定義為其邊的總數，記為 |E(G)|。
+- **關節點 Articulation Point:** 在連通圖中，若刪除節點 v 及其相關邊後，圖變為不連通，則稱節點 v 為關節點。
+
+  ![alt text](image-80.png)
+
+- **雙連通圖 Biconnected Graph:** 若圖中不存在關節點，則稱該圖為雙連通圖。
+- **橋 Bridge:** 在連通圖中，若刪除邊 e 後，圖變為不連通(Disconnected)，則稱邊 e 為橋。
+
+  ![alt text](image-81.png)
+
+## 有向圖 Directed Graph
+
+### 定義 Definition
+
+一個有向圖 G 可以表示為一對 G = (V, E)，其中:
+
+- V(G) 是節點的集合，稱為頂點集(vertex set)，每個節點代表一個物件。
+- E(G) 是有向邊的集合，稱為邊集(edge set)，每條有向邊連接兩個節點，表示從一個節點指向另一個節點的關係。
+
+下圖為一個包含 5 個節點和 6 條有向邊的有向圖，其中:
+
+- V(G) = {A, B, C, D, E}
+- E(G) = {(A, B), (A, D), (B, D), (C, B), (D, E), (E, C)}其中(u, v)表示有向邊從節點 u 指向節點 v(u -> v)。
+
+![alt text](image-82.png)
+
+### 術語 Terminology
+
+- **入度 Indegree:** 節點 v 的入度 indeg(v) 是指指向節點 v 的有向邊的數量。
+- **出度 Outdegree:** 節點 u 的出度 outdeg(u) 是指從節點 u 指向其他節點的有向邊的數量。
+- **度 Degree:** 節點 u 的度 deg(u) 是指與節點 u 相連的有向邊的總數，即 deg(u) = indeg(u) + outdeg(u)。
+- **源點 Source Node:** 若節點 u 的入度 indeg(u) = 0 且 outdeg(u) > 0，則稱節點 u 為源點。
+- **匯點 Sink Node:** 若節點 v 的出度 outdeg(v) = 0 且 indeg(v) > 0，則稱節點 v 為匯點。
+- **吊墜節點 Pendant Node:** 若節點 w 的度 deg(w) = 1，則稱節點 w 為吊墜節點。
+- **可及性 Reachability:** 在有向圖中，若存在一條有向路徑從節點 u 指向節點 v，則稱節點 v 可由節點 u 可及(reachable)。
+- **平行/多重邊 Parallel/Multiedge:** 若有向圖中存在多條有向邊連接同一對節點 u 和 v，即 e1 = (u, v) 和 e2 = (u, v)，則稱這些邊為平行/多重邊。
+- **強連通有向圖 Strongly Connected Directed Graph:** 若有向圖中任意兩個節點 u 和 v 之間都存在有向路徑從 u 指向 v 且從 v 指向 u，則稱該有向圖為強連通有向圖。
+
+  ![alt text](image-83.png)
+
+- **弱連通有向圖 Weakly Connected Directed Graph:** 若將有向圖中的所有有向邊視為無向邊後，所得的無向圖為連通圖，則稱該有向圖為弱連通有向圖。
+
+  ![alt text](image-84.png)
+
+- **遞移閉包 Transitive Closure:** 在有向圖中，若存在有向路徑從節點 u 指向節點 v，則在遞移閉包中也存在一條直接的有向邊從 u 指向 v。換句話說，遞移閉包這張圖記錄了一點能不能走到另一點。
+
+  ![alt text](image-85.png)
+
+## 最小生成樹 Minimum Spanning Tree (MST)
+
+**生成樹是一個連通無向圖的子集，一張圖可以有很多生成樹。生成樹必須是連通(connected)、無向(undirected)、無迴圈(No Loop)的。**
+
+**而最小生成樹則是在所有可能的生成樹中，在為每條邊賦予權重(weight)的情況下，選擇總權重相等或是小於其他生成樹的生成樹。**
+
+**可能會有很多的最小生成樹，取決於邊的權重分配。若所有邊的權重皆相同，則所有生成樹皆為最小生成樹；若邊的權重皆不同，則最小生成樹為唯一。而對於沒有權重的圖，可以將所有邊的權重視為相同，則所有生成樹皆為最小生成樹。**
+
+### 普林演算法 Prim's Algorithm
+
+**普林演算法是一種用於尋找最小生成樹的貪心算法，其核心思想是從一個節點開始，逐步擴展生成樹，直到包含所有節點為止。**
+
+**口訣: `找鄰居->選最小->加入樹`**
+
+![alt text](image-86.png)
+
+### 克氏演算法 Kruskal's Algorithm
+
+**克氏演算法是一種用於尋找最小生成樹的貪心算法，其核心思想是從所有邊(E(G))中選擇權重最小的邊，並將其加入生成樹中，直到包含所有節點為止。若該圖未連通，則會找到最小生成森林。**
+
+**口訣: `選小邊->加不通`**
+
+![alt text](image-87.png)
+
+### 通用規則 general formulation
+
+![alt text](image-88.png)
+
+**在上述兩種演算法中，都以各自的準則選擇所謂的安全邊(safe edge)，即在不形成迴路的情況下，將邊加入生成樹中。**
+
+- **普林演算法:** 從生成樹的節點出發，選擇與生成樹相連且權重最小的邊作為安全邊。
+- **克氏演算法:** 從所有邊中選擇權重最小的邊，若該邊連接的兩個節點不曾經被連結過，則將其加入生成樹中作為安全邊。
+
+## 圖的表示法 Graph Representation
+
+**圖可以透過多種方式來表示，在電腦中儲存圖有三種常見方式:**
+
+- **串列表示(Sequential Representation):** 使用鄰接矩陣(adjacency matrix)來表示圖，其中矩陣的行和列分別代表節點，矩陣中的元素表示節點之間是否存在邊。
+- **鏈結表示(Linked Representation):** 使用鄰接串列(adjacency list)來表示圖，其中每個節點都有一個鏈接列表(Link List)，用來儲存節點的鄰居。
+- **鄰接多重列表表示(Adjacency Multilist Representation):** 算是鄰接串列的進階版。
+
+### 鄰接矩陣 Adjacency Matrix
+
+**鄰接矩陣以一個 n x n 的二維陣列來表示一個有 n 個節點的圖，其中矩陣中的元素表示節點 n1 和節點 n2 之間是否存在邊，存在記為 1，不存在記為 0。(因此也被稱作比特矩陣 bit matrix 或是布林矩陣 boolean matrix)**
+
+**一個一階的鄰接矩陣 A^1 表示圖中節點之間的直接連接關係，而更高階的鄰接矩陣 A^k 則表示節點之間是否可以透過 k 條邊連接起來。我們可以透過(A^1)^k 來計算。**
+
+![alt text](image-90.png)
+
+**鄰接矩陣還有一些推廣如下:**
+**`B^k = A^1 + A^2 + ... + A^k`。**
+**path matrix P 設定若存在從節點 i 到節點 j 的路徑，則 P[i][j] = 1，否則為 0。**
+
+其他的一些鄰接矩陣:
+
+![alt text](image-89.png)
+
+### 鄰接串列 Adjacency List
+
+**鄰接串列通常被用來儲存邊數少至中等的圖，在電腦記憶體中，鄰接矩陣更適合用來儲存稀疏圖(sparse graph)，而鄰接串列則更適合用來儲存稠密圖(dense graph)。**
+
+一些鄰接串列的範例:
+
+![alt text](image-91.png)
+
+### 鄰接多重列表 Adjacency Multilist
+
+**鄰接多重列表是鄰接列表的改良，他以基於邊的形式儲存資料，而藉由這個資料反向推出頂點的鄰接關係。**
+
+範例:
+
+![alt text](image-92.png)
+
+## 圖的遍歷 Graph Traversal
+
+**圖的遍歷是指從圖中的一個節點開始，按照一定的規則訪問圖中的所有節點和邊的過程。常見的圖遍歷算法有深度優先搜尋(Depth-First Search, DFS)和廣度優先搜尋(Breadth-First Search, BFS)。**
+
+### 廣度優先搜尋 Breadth-First Search (BFS)
+
+**使用隊列(queue)來實現，從起始節點開始，先訪問該節點的所有鄰接節點，然後再依次訪問這些鄰接節點的鄰接節點，直到所有節點都被訪問為止。**
+
+**在樹上對應到階序遍歷(level-order traversal)。**
+
+![alt text](image-93.png)
+
+### 深度優先搜尋 Depth-First Search (DFS)
+
+**使用堆疊(stack)來實現，從起始節點開始，沿著一條路徑一直深入訪問節點，直到無法繼續深入為止，然後回溯到上一個節點，繼續訪問其他未被訪問的鄰接節點，直到所有節點都被訪問為止。**
+
+**在樹上對應到前序遍歷(pre-order traversal)。(樹的前序、中序、後序都可以透過 DFS 實現)**
+
+![alt text](image-94.png)
